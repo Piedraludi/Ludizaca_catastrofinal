@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>GEOVISOR LUDIZACA</title>
+
+    <style>
+      body {
+        background-color: coral;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><polygon points="30,0 60,30 30,60 0,30" fill="%23ffffff20"/></svg>');
+        background-repeat: repeat;
+        font-family: Arial, sans-serif;
+        color: #222;
+      }
+      h1, h2, h3 {
+        color: #333;
+      }
+      .boton-descarga {
+        display: inline-block;
+        margin: 5px;
+        padding: 10px 20px;
+        background-color: #ffffff;
+        color: #333;
+        text-decoration: none;
+        border: 2px solid #444;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+      }
+      .boton-descarga:hover {
+        background-color: #ddd;
+      }
+      iframe {
+        border: 1px solid #999;
+      }
+      #map {
+        width: 900px;
+        height: 600px;
+        margin: 20px auto;
+        border: 1px solid #999;
+      }
+    </style>
+
+    <!-- OpenLayers y proj4 -->
+    <script src="https://cdn.jsdelivr.net/npm/proj4@2.8.0/dist/proj4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.4.0/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.4.0/ol.css" />
+</head>
+<body>
+
+    <center><h1>Mi Primer Geoportal</h1></center>
+
+    <center>
+        <img src="https://estudiante.ucuenca.edu.ec/assets/imagenes/EscudoUniversidad.jpg" alt="Logo Universidad" width="300">
+    </center>
+
+    <br><br>
+
+    <p><strong>Tarea Nro 2:</strong> Elaboración de un Geoportal catastral con datos de predios y construcciones pertenecientes al cantón Cuenca, ubicados en la zona urbana.</p>
+
+    <a href="https://qgiscloud.com/esteban_ludizaca/Trabajo_final_01_Ludizaca_Piedra_web/" target="_blank">
+        Acceso al Geoportal QGIS Cloud de referencia del Distrito Metropolitano de Quito, sector PONCIANO
+    </a>
+
+    <br><br>
+
+    <center><h2>Imágenes de previsualización</h2></center>
+
+    <center>
+        <p><strong>Predios Cuenca</strong></p>
+        <img src="https://geoserver.idesinde.com:8443/geoserver/ludizaca/wms?service=WMS&version=1.1.0&request=GetMap&layers=ludizaca:Predios_Cuenca&bbox=721049.1000002427,9679645.600000001,721502.0000002473,9680195.100000001&width=632&height=768&srs=EPSG:32717&styles=&format=image/png" alt="Imagen Predios Cuenca" width="400">
+        
+        <br><br>
+
+        <p><strong>Construcciones Cuenca</strong></p>
+        <img src="https://geoserver.idesinde.com:8443/geoserver/ludizaca/wms?service=WMS&version=1.1.0&request=GetMap&layers=ludizaca:Construcciones_Cuenca&bbox=721078.7000002494,9679645.600000001,721501.9967072662,9680185.152500005&width=602&height=768&srs=EPSG:32717&styles=&format=image/png" alt="Imagen Construcciones Cuenca" width="400">
+    </center>
+
+    <br><br>
+
+    <center><h2>Descargas por Formato</h2></center>
+    <center>
+        <h3>Predios Cuenca</h3>
+        <a class="boton-descarga" href="https://geoserver.idesinde.com:8443/geoserver/ludizaca/wms/kml?layers=ludizaca:Predios_Cuenca">Descargar KML</a>
+        <a class="boton-descarga" href="https://geoserver.idesinde.com:8443/geoserver/ludizaca/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ludizaca:Predios_Cuenca&outputFormat=application/json">Descargar GeoJSON</a>
+        <a class="boton-descarga" href="https://geoserver.idesinde.com:8443/geoserver/ludizaca/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ludizaca:Predios_Cuenca&outputFormat=shape-zip">Descargar Shapefile</a>
+
+        <h3>Construcciones Cuenca</h3>
+        <a class="boton-descarga" href="https://geoserver.idesinde.com:8443/geoserver/ludizaca/wms/kml?layers=ludizaca:Construcciones_Cuenca">Descargar KML</a>
+        <a class="boton-descarga" href="https://geoserver.idesinde.com:8443/geoserver/ludizaca/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ludizaca:Construcciones_Cuenca&outputFormat=application/json">Descargar GeoJSON</a>
+        <a class="boton-descarga" href="https://geoserver.idesinde.com:8443/geoserver/ludizaca/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ludizaca:Construcciones_Cuenca&outputFormat=shape-zip">Descargar Shapefile</a>
+    </center>
+
+    <br><br>
+
+    <center><h2>Zonas de Referencia de Riesgos del Ecuador</h2></center>
+    <center>
+        <a href="https://alertasecuador.gob.ec/fenomeno_el_nino/mapa_de_amenaza" target="_blank">
+            <img src="https://www.icog.es/geologosdelmundo/wp-content/uploads/2020/07/Logo-nuevo-SNGR.jpg" alt="Mapa de Riesgo" width="200">
+        </a>
+    </center>
+
+    <br><br>
+
+    <center><h2>Atlas Nacional de Riesgos (PDF)</h2></center>
+    <center>
+        <p>Zonas de consideracion de riesgos</p>
+        <iframe src="https://horizon.documentation.ird.fr/exl-doc/pleins_textes/divers11-03/010032419.pdf" width="900" height="600"></iframe>
+    </center>
+
+    <br><br>
+
+    <center><h2>Geovisor del Ministerio del Ambiente</h2></center>
+    <center>
+        <iframe src="http://ide.ambiente.gob.ec/mapainteractivo/" width="900" height="600"></iframe>
+    </center>
+
+    <br><br>
+
+    <center><h2>Mapa Interactivo con OpenLayers (Google Satellite)</h2></center>
+    <div id="map"></div>
+
+    <script>
+      // Registrar la proyección EPSG:32717 con proj4
+      proj4.defs("EPSG:32717","+proj=utm +zone=17 +south +datum=WGS84 +units=m +no_defs");
+      ol.proj.proj4.register(proj4);
+
+      // Capa base Google Satellite (usando XYZ)
+      const googleSatellite = new ol.layer.Tile({
+        source: new ol.source.XYZ({
+          url: 'http://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+          maxZoom: 20,
+          crossOrigin: 'anonymous'
+        })
+      });
+
+      // Capas WMS de GeoServer
+      const prediosLayer = new ol.layer.Image({
+        source: new ol.source.ImageWMS({
+          url: 'https://geoserver.idesinde.com:8443/geoserver/ludizaca/wms',
+          params: {'LAYERS': 'ludizaca:Predios_Cuenca', 'TILED': true},
+          ratio: 1,
+          serverType: 'geoserver'
+        }),
+        opacity: 0.7
+      });
+
+      const construccionesLayer = new ol.layer.Image({
+        source: new ol.source.ImageWMS({
+          url: 'https://geoserver.idesinde.com:8443/geoserver/ludizaca/wms',
+          params: {'LAYERS': 'ludizaca:Construcciones_Cuenca', 'TILED': true},
+          ratio: 1,
+          serverType: 'geoserver'
+        }),
+        opacity: 0.7
+      });
+
+      // Crear el mapa con la proyección UTM 17S
+      const map = new ol.Map({
+        target: 'map',
+        layers: [googleSatellite, prediosLayer, construccionesLayer],
+        view: new ol.View({
+          projection: 'EPSG:32717',
+          center: [721275, 9679920],  // Cuenca UTM 17S
+          zoom: 16
+        })
+      });
+    </script>
+
+</body>
+</html>
